@@ -3,7 +3,7 @@ module.exports = function eleventyConfig() {
     dir: {
       output: 'dist',
       input: 'src',
-      includes: 'layouts',
+      includes: '../layouts',
     },
   };
 };
