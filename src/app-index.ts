@@ -1,0 +1,1 @@
+import '@fluentui/web-components';

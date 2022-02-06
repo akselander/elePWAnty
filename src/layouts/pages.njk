@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>elePWAnty</title>
+
+    <base href="/" />
+
+    <!-- Ensures the webpage's dimensions are responsive.-->
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <meta name="description" content="Template for progressive web apps" />
+    <meta name="theme-color" content="#6E23E7" />
+
+    <!--
+      Apple-specific. Ensurer runnning in full-screen mode with a black status bar.
+      Learn more at https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+    -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="elePWAnty" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!-- Icon representing document. Think favicon.ico. -->
+    <link
+      rel="icon"
+      href="assets/icons/Square44x44Logo.altform-lightunplated_targetsize-24.png"
+      type="image/x-icon"
+    />
+
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Stylesheets. -->
+    <link href="styles/global.css" rel="stylesheet" />
+
+    <!-- .js class is used for progressive enhancement -->
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+
+    <script type="module" src="./app-index.js"></script>
+  </head>
+
+  <body>
+    <fluent-design-system-provider>
+      {{content | safe}}
+    </fluent-design-system-provider>
+
+    <script type="module" src="/service-worker.ts"></script>
+
+    <script>
+      navigator.serviceWorker.register('/service-worker.js');
+    </script>
+  </body>
+</html>
