@@ -6,7 +6,7 @@ import copy from 'rollup-plugin-copy';
 import typescript from '@rollup/plugin-typescript';
 
 export default {
-  input: 'src/app-index.ts',
+  input: ['src/app-index.ts', 'service-worker.ts'],
   output: {
     dir: 'dist',
     format: 'es',

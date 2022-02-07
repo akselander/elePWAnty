@@ -39,15 +39,10 @@
           "no-unknown-slot": "off",
           "no-unknown-tag-name": "error"
         },
-        "globalTags": [
-          "details-disabled",
-          "squirm-inal",
-          "squirm-inal-form",
-          "squirm-inal-group"
-        ]
+        "globalTags": []
       }
     ]
   },
   "include": ["service-worker.ts", "src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts", "dist/service-worker.js"]
+  "exclude": ["node_modules", "**/*.spec.ts", "build/service-worker.js"]
 }
