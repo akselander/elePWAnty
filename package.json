@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && rollup --config rollup.config.js && eleventy && node workbox.mjs",
-    "dev": "concurrently \"rollup --config rollup.config.dev.js --watch\" \"eleventy --config=\".eleventy.dev.js\" --serve\"",
+    "build": "rimraf dist && rollup --config rollup.config.js && NODE_OPTIONS=--experimental-vm-modules eleventy && node workbox.mjs",
+    "dev": "concurrently \"rollup --config rollup.config.dev.js --watch\" \"NODE_OPTIONS=--experimental-vm-modules eleventy --config=\".eleventy.dev.js\" --serve\"",
     "start": "npm run dev"
   },
   "author": "Aleksander Kuźma",
   "license": "MIT",
   "dependencies": {
-    "@fluentui/web-components": "^2.2.2",
+    "@lit-labs/eleventy-plugin-lit": "^0.1.1",
+    "@webcomponents/template-shadowroot": "^0.1.0",
     "lit": "^2.1.2",
     "workbox-build": "^6.4.2",
     "workbox-core": "^6.4.2",

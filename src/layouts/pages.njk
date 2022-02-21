@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="modulepreload" href="/experimental-hydrate-support.js" />
+    <link rel="modulepreload" href="/app-index.js" />
+
     <meta charset="utf-8" />
     <title>elePWAnty</title>
 
@@ -34,18 +37,63 @@
     <!-- Stylesheets. -->
     <link href="styles/global.css" rel="stylesheet" />
 
+    <script
+      type="module"
+      src="https://unpkg.com/@fluentui/web-components"
+    ></script>
+
     <!-- .js class is used for progressive enhancement -->
     <script>
       document.documentElement.classList.add('js');
     </script>
 
-    <script type="module" src="./app-index.js"></script>
+    <style></style>
   </head>
 
-  <body>
+  <body dsd-pending>
     <fluent-design-system-provider>
       {{content | safe}}
     </fluent-design-system-provider>
+
+    <script type="module">
+      (async function hydrateLit() {
+        // Start fetching the Lit hydration support module (note the absence
+        // of "await" -- we don't want to block yet).
+        const litHydrateSupportInstalled = import(
+          '/experimental-hydrate-support.js'
+        );
+
+        // Check if we require the declarative shadow DOM polyfill. As of
+        // February 2022, Chrome and Edge have native support, but Firefox
+        // and Safari don't yet.
+        if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
+          // Fetch the declarative shadow DOM polyfill.
+          const { hydrateShadowRoots } = await import(
+            '/template-shadowroot.js'
+          );
+
+          // Apply the polyfill. This is a one-shot operation, so it is important
+          // it happens after all HTML has been parsed.
+          hydrateShadowRoots(document.body);
+
+          // At this point, browsers without native declarative shadow DOM
+          // support can paint the initial state of your components!
+          document.body.removeAttribute('dsd-pending');
+        }
+
+        // The Lit hydration support module must be installed before we can
+        // load any component definitions. Wait until it's ready.
+        await litHydrateSupportInstalled;
+
+        // Load component definitions. As each component definition loads, your
+        // pre-rendered components will come to life and become interactive.
+        //
+        // You may also prefer to bundle your components into fewer JS modules.
+        // See https://lit.dev/docs/tools/production/#building-with-rollup for
+        // more details.
+        import('./app-index.js');
+      })();
+    </script>
 
     <script>
       navigator.serviceWorker.register('/service-worker.js');

@@ -6,7 +6,12 @@ import copy from 'rollup-plugin-copy';
 import typescript from '@rollup/plugin-typescript';
 
 export default {
-  input: ['src/app-index.ts', 'service-worker.ts'],
+  input: [
+    'src/app-index.ts',
+    'service-worker.ts',
+    'node_modules/lit/experimental-hydrate-support.js',
+    'node_modules/@webcomponents/template-shadowroot/template-shadowroot.js',
+  ],
   output: {
     dir: 'dist',
     format: 'es',

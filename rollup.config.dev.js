@@ -4,7 +4,11 @@ import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 
 export default {
-  input: 'src/app-index.ts',
+  input: [
+    'src/app-index.ts',
+    'node_modules/lit/experimental-hydrate-support.js',
+    'node_modules/@webcomponents/template-shadowroot/template-shadowroot.js',
+  ],
   output: {
     dir: 'build',
     format: 'es',
