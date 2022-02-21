@@ -18,10 +18,8 @@ body {
   html,
   body {
     background: #181818;
-  }
-
-  fluent-design-system-provider {
     color: white;
+    --accent-foreground-rest: #103478;
   }
 }
 
@@ -30,9 +28,6 @@ body {
   body {
     background: white;
     color: black;
-  }
-
-  fluent-design-system-provider {
-    color: black;
+    --accent-foreground-rest: #b4c1d9;
   }
 }

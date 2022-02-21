@@ -10,7 +10,6 @@ A simple template meant to provide a kickstart for a progressively enhanced web 
 
 - [TypeScript](https://www.typescriptlang.org/) - type safety, code suggestions and nice integration with lit.
 - [lit](https://lit.dev/) - a familiar way of writing complex components
-- [Fluent UI](https://docs.microsoft.com/pl-pl/fluent-ui/web-components/) - accessible set of UI components
 - [11ty](https://www.11ty.dev/) - for Static Site Generation by taking advantage of templating
 - [Rollup](https://www.rollupjs.org/guide/en/) - minifaction, bundling and dealing with js
 - [Workbox](https://developers.google.com/web/tools/workbox/) - more pleasant service worker experience

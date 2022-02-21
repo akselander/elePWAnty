@@ -37,11 +37,6 @@
     <!-- Stylesheets. -->
     <link href="styles/global.css" rel="stylesheet" />
 
-    <script
-      type="module"
-      src="https://unpkg.com/@fluentui/web-components"
-    ></script>
-
     <!-- .js class is used for progressive enhancement -->
     <script>
       document.documentElement.classList.add('js');
@@ -51,9 +46,7 @@
   </head>
 
   <body dsd-pending>
-    <fluent-design-system-provider>
-      {{content | safe}}
-    </fluent-design-system-provider>
+    {{content | safe}}
 
     <script type="module">
       (async function hydrateLit() {

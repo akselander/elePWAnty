@@ -46,10 +46,6 @@ export class AppHeader extends LitElement {
         header {
           color: black;
         }
-
-        nav fluent-anchor::part(control) {
-          color: initial;
-        }
       }
     `;
   }
